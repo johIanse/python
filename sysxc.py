@@ -4,7 +4,11 @@
 2. cron 以防cor识别出错每天运行两次左右
 3. ddddocr搭建方法https://github.com/sml2h3/ocr_api_server #如果脚本里的失效请自行搭建
 """
-import requests, base64, json, time, os
+import requests
+import base64
+import json
+import time
+import os
 
 try:
     from Crypto.Cipher import AES
