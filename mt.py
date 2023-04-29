@@ -9,8 +9,10 @@ else:
     print('请设置环境变量 mt_ck')
     exit()
     
-url1 = "https://api.mitangwl.cn/app/my/queryMyApprointmentList"
-url2 = "https://api.mitangwl.cn/app/my/appointmentSign"
+url1 = 'https://api.mitangwl.cn/app/my/queryMyApprointmentList'
+url2 = 'https://api.mitangwl.cn/app/my/appointmentSign'
+url3 = 'https://api.mitangwl.cn/app/my/queryUserBalance'
+
 
 headers = {
     'Cookie': mt_ck
@@ -35,3 +37,9 @@ response_json = json.loads(response2.content)
 
 msg = response_json.get('msg')
 print(msg)
+
+response3 = requests.post(url3, headers=headers)
+content_str = response3.content.decode('utf-8')
+content_json = response3.json()
+amount = content_json['data']['amount']
+print("账户余额 ", amount)
