@@ -6,14 +6,15 @@ mt_ck = os.environ.get('mt_ck')
 
 if mt_ck:
     mt_ck_list = mt_ck.split('&')
-    zfb = mt_ck_list[1]
+    zfb = mt_ck_list[1].replace("'", "")
     xm = mt_ck_list[2].replace("'", "")
-    mt_ck = "JSESSIONID=" + mt_ck_list[0]
-
+    ck = mt_ck_list[0]
 else:
     print('请设置环境变量 mt_ck')
     exit()
     
+print(xm,zfb,ck)
+
 url1 = "https://api.mitangwl.cn/app/my/queryMyApprointmentList"
 url2 = "https://api.mitangwl.cn/app/my/appointmentSign"
 url3 = "https://api.mitangwl.cn/app/my/queryUserBalance"
@@ -21,9 +22,10 @@ url4 = "https://api.mitangwl.cn/app/my/applyCashOut"
 
 
 headers = {
-    'Cookie': mt_ck
+    'Cookie': ck
 }
 
+print(headers)
 data = {}
 
 response = requests.post(url=url1, headers=headers, json=data)
