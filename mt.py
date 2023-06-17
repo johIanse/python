@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+from time import sleep
 
 mt_ck = os.environ.get('mt_ck')
 
@@ -41,6 +42,7 @@ if mt_ck:
 
             data2 = {"appointmentId": int(appointment['appointmentId'])}
 
+            sleep(120)
             response2 = requests.post(url=url2, headers=headers, json=data2)
 
             response_json = json.loads(response2.content)
@@ -61,6 +63,7 @@ if mt_ck:
         }
 
 
+        sleep(120)
         response4 = requests.post(url4, json=payload, headers=headers)
         if response.status_code == 200:
            print(response4.json()['msg'])
