@@ -1,5 +1,6 @@
 #变量 qmyy
 #值 账号:密码#账号:密码
+#需要填写自个的device，抓包登陆就行了
 
 import os
 import hashlib
@@ -21,7 +22,7 @@ def sign_in(email, password):
     login_data = {
         "password": password_md5,
         "ip": random_ip(),
-        "device": str(uuid.uuid4()),
+        "device": "填写自个的device",
         "email": email,
     }
     response = requests.post(login_url, data=login_data)
